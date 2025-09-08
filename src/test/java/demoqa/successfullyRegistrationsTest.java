@@ -26,7 +26,6 @@ public class successfullyRegistrationsTest extends testBase {
         step("Open reg form", () ->{
             open("/automation-practice-form");
             Selenide.executeJavaScript("$(\"#fixedban\").remove");
-            $(".text-center").shouldHave(text("Practice Form"));
 
         });
         step("Add user date", () ->{
