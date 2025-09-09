@@ -38,6 +38,14 @@ tasks.withType(JavaCompile) {
 }
 
 tasks.withType(Test) {
+    testLogging {
+        // Показывать вывод из тестов всегда
+        showStandardStreams = true
+    }
+}
+
+tasks.withType(Test) {
+    systemProperties(System.getProperties())
     useJUnitPlatform()
     testLogging {
         lifecycle {
@@ -52,3 +60,10 @@ tasks.register('remote_test', Test) {
         includeTags("remote")
     }
 }
+
+tasks.register('hello_test', Test) {
+    useJUnitPlatform {
+        includeTags("hello_test")
+    }
+}
+
