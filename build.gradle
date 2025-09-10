@@ -55,7 +55,7 @@ tasks.withType(Test) {
     }
 }
 
-tasks.register('hello_test', Test) {
+tasks.register('hello', Test) {
     useJUnitPlatform {
         includeTags("remote")
     }
@@ -65,5 +65,23 @@ tasks.register('hello_test', Test) {
     useJUnitPlatform {
         includeTags("hello_test")
     }
+
+    // Просто наследуем все от основной задачи test
+    mustRunAfter test
+    systemProperties = test.systemProperties
+    testClassesDirs = test.testClassesDirs
+    classpath = test.classpath
+}
+
+tasks.register('one_property', Test) {
+    useJUnitPlatform {
+        includeTags("one_property")
+    }
+
+    // Просто наследуем все от основной задачи test
+    mustRunAfter test
+    systemProperties = test.systemProperties
+    testClassesDirs = test.testClassesDirs
+    classpath = test.classpath
 }
 
